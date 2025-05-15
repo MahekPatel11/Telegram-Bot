@@ -1,0 +1,7 @@
+langchain 
+python-dotenv 
+ipykernel #when to activate our python version use this library
+langchain_groq #used for api key 
+langchain_community
+langchain_huggingface
+python-telegram-bot
