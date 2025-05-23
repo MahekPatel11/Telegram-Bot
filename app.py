@@ -78,10 +78,13 @@ from telegram.ext import ApplicationHandlerStop
 load_dotenv()
 print("Loaded TELEGRAM_API_KEY:", os.getenv("TELEGRAM_API_KEY"))
 
+print("GROQ_API_KEY is:", os.getenv("GROQ_API_KEY"))  # Debug only
+
 os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
 os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-groq_api_key = os.getenv("GROQ_API_KEY")
+groq_api_key = "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"
+#groq_api_key = os.getenv("GROQ_API_KEY")
 
 def setup_llm_chain(topic="technology"):
     prompt = ChatPromptTemplate.from_messages([
@@ -125,7 +128,8 @@ async def handle(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    token = "8099220237:AAHlYFOsyvCc_pq0ouON22WqVCaFd6yA2lo"
+    token = os.getenv("TELEGRAM_API_KEY")
+    # token = "8099220237:AAHlYFOsyvCc_pq0ouON22WqVCaFd6yA2lo"
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
